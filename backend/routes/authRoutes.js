@@ -1,5 +1,6 @@
 const express = require('express')
-const { signIn, signUp, logout } = require('../controllers/authcontroller')
+const { signIn, signUp, logout, userProfile } = require('../controllers/authcontroller')
+const { isAuthenticated, isAdmin } = require('../middlewares/auth')
 
 const router = express.Router()
 
@@ -9,5 +10,6 @@ const router = express.Router()
 router.post('/signup', signUp)
 router.post('/signin', signIn)
 router.get('/logout', logout)
+router.get('/me',isAuthenticated, isAdmin, userProfile)
 
 module.exports =  router
