@@ -7,6 +7,9 @@ require("dotenv").config()
 var cors = require("cors")
 const cookieParser = require("cookie-parser")
 const errorHandler = require("./middlewares/error")
+//roues
+const authRoutes = require('./routes/authRoutes')
+
 
 //database connnectiion
 mongoose.connect(process.env.DB_CONNECTION, {
@@ -23,6 +26,10 @@ app.use(bodyParser.urlencoded({
 }))
 app.use(cookieParser())
 app.use(cors())
+
+//routes
+app.use('/api/v1' , authRoutes)
+
 
 //error handler middleware
 app.use(errorHandler)
