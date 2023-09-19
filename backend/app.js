@@ -10,6 +10,8 @@ const errorHandler = require("./middlewares/error")
 //roues
 const authRoutes = require('./routes/authRoutes')
 const userRoutes = require('./routes/userRoute')
+const jobTypeRoutes = require('./routes/jobTypeRoutes')
+const jobRoutes = require('./routes/jobsRoutes')
 
 
 //database connnectiion
@@ -31,6 +33,8 @@ app.use(cors())
 //routes
 app.use('/api/v1' , authRoutes)
 app.use('/api/v1' , userRoutes)
+app.use('/api/v1' , jobTypeRoutes)
+app.use('/api/v1' , jobRoutes)
 
 
 //error handler middleware
